@@ -58,6 +58,7 @@ var cardTemplate = "<div class='ui card' data-time='{{created_at}}'> "+
   "</div>"+
 "</div>";
 
+
 cardTemplate = Handlebars.compile(cardTemplate);
 
 export default cardTemplate
