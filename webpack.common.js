@@ -64,6 +64,10 @@ module.exports = {
         {
           from: './src/img',
           to: 'img'
+        },
+        {
+          from: './src/autoScroll.js',
+          to: './autoScroll.js'
         }
       ],
     })

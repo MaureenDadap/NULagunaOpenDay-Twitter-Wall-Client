@@ -39,6 +39,7 @@ a {
   background-color: $primary-blue;
   padding-top: 1rem;
   padding: 0rem;
+  z-index: 50;
 
   img {
     max-height: 4rem;
@@ -76,7 +77,7 @@ a {
 
 #card-container {
   margin: 0.5rem auto 0;
-  padding-top: 7rem;
+  padding-top: 6rem;
   .card {
     width: $card-width;
     background: white;
