@@ -68,6 +68,10 @@ module.exports = {
         {
           from: './src/autoScroll.js',
           to: './autoScroll.js'
+        },
+        {
+          from: './src/spotlight.js',
+          to: './spotlight.js'
         }
       ],
     })

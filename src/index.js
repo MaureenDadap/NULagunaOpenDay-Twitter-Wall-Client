@@ -21,7 +21,6 @@ $(document).ready(function () {
       var itemDate = new Date(item.time);
 
       $("#card-container").append(cardTemplate(item));
-      //$("#card-container").prepend(cardTemplate(item));
 
     });
 
@@ -66,28 +65,16 @@ function updateFeed() {
         var elem = $(cardTemplate(post)).get(0);
 
         elements.push(elem);
-        //elements.unshift(elem);
 
       });
 
       $("#card-container").prepend(elements);
-      //$("#card-container").append(elements);
 
       imagesLoaded("#card-container", function () {
-        var Y=window.scrollY;
+        var Y=window.scrollY; //save screen vertical position
         iso.prepended(elements);
-        window.scrollTo(0,Y);
-        //iso.appended(elements);
-
+        window.scrollTo(0,Y); // go back to saved position
       });
-
     }
-
   });
-}
-
-function scrollToBottom() {
- 
-  document.getElementById('bottom').scrollIntoView()
-  //window.scrollTo(0, document.body.scrollHeight);
 }

@@ -11,6 +11,11 @@ var currentTime, prevTime, timeDiff;
 window.addEventListener("scroll", function (e) {
     // window.pageYOffset is the fallback value for IE
     currentPos = window.scrollY || window.pageYOffset;
+
+    //if bottom of page is reached, reload page
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+       location.reload();
+    }
 });
 
 window.addEventListener("wheel", handleManualScroll);
@@ -48,7 +53,7 @@ function setAutoScroll(newValue) {
                     isScrolling = false;
                     prevPos = currentPos;
                     prevTime = currentTime;
-                }
+                }   
             }
         } else {
             prevTime = currentTime;
