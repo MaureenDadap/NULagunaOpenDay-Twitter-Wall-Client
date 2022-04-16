@@ -5,6 +5,9 @@ import Isotope from 'isotope-layout';
 import imagesLoaded from 'imagesloaded';
 
 import './sass/style.scss';
+import './img/nulogo.png';
+import './img/nulogo.webp';
+import './img/ccslogo.png';
 
 import cardTemplate from './handlebars-init';
 

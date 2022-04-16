@@ -1,5 +1,5 @@
 window.hashtagWallConfig = {
-  hashtag: '#loona',
+  hashtag: '#NULagunaOpenDay2022',
   apiBaseUrl: 'http://localhost:8080',
-  updateInterval: 10 * 1000
+  updateInterval: 1 * 1000
 };

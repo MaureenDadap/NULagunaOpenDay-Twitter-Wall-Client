@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
@@ -33,7 +33,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jp(e*)g|svg)$/,
+        test: /\.(png|jp(e*)g|svg|webp)$/,
         use: [
           {
             loader: 'url-loader',
@@ -60,6 +60,10 @@ module.exports = {
         {
           from: './src/config.js',
           to: './config.js'
+        },
+        {
+          from: './src/img',
+          to: 'img'
         }
       ],
     })
