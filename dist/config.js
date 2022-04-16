@@ -1,1 +1,1 @@
-window.hashtagWallConfig={hashtag:"#helsinki",apiBaseUrl:"http://hashtag.polso.info:8080",updateInterval:1e4};
+window.hashtagWallConfig={hashtag:"#loona",apiBaseUrl:"http://localhost:8080",updateInterval:1e4};

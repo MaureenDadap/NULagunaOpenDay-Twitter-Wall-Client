@@ -1,5 +1,5 @@
 window.hashtagWallConfig = {
-  hashtag: '#helsinki',
-  apiBaseUrl: 'http://hashtag.polso.info:8080',
+  hashtag: '#loona',
+  apiBaseUrl: 'http://localhost:8080',
   updateInterval: 10 * 1000
 };
