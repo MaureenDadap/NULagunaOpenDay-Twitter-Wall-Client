@@ -2,7 +2,7 @@
 
 A website that displays posts from several social media sources. Automatically updates the feed with set intervals. Uses [Hashtag-Wall-Server](https://github.com/MaureenDadap/Hashtag-Wall-Server) to fetch the data.
 
-Forked from [Hashtag-Wall-client](https://github.com/Krisseck/Hashtag-Wall-Client).
+Forked from [Krisseck's](https://github.com/Krisseck) [Hashtag-Wall-client](https://github.com/Krisseck/Hashtag-Wall-Client).
 ### To build and customize
 
 Run `yarn`to install dependencies
