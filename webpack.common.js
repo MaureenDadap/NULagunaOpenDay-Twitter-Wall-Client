@@ -55,10 +55,14 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new CopyWebpackPlugin([{
-      from: './src/config.js',
-      to: './config.js'
-    }])
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/config.js',
+          to: './config.js'
+        }
+      ],
+    })
   ]
 };
- 
+
