@@ -6,6 +6,16 @@
 
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&family=Oswald:wght@600&display=swap");
 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  // background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 html,
 body {
   font-size: $font-size;
@@ -129,15 +139,15 @@ a {
 
 //animated bg
 @keyframes animate {
-  0%{
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-      border-radius: 0;
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
   }
-  100%{
-      transform: translateY(-1000px) rotate(720deg);
-      opacity: 0;
-      border-radius: 50%;
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
   }
 }
 
@@ -276,7 +286,6 @@ a {
   animation-delay: 56s;
 }
 
-
 // MODAL
 .modal {
   position: fixed;
@@ -308,7 +317,7 @@ a {
 }
 
 #modal-content .card {
-  width: 15rem;
+  width: $card-width;
   background: white;
   /* border: 2px solid #cdcdcd; */
   border-radius: 10px;

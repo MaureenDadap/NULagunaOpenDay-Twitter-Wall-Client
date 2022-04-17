@@ -45,37 +45,41 @@ $(document).ready(function () {
 
   });
   setInterval(updateFeed, window.hashtagWallConfig.updateInterval);
-  setInterval(spotlightPost, window.hashtagWallConfig.updateInterval);
+  setInterval(toggleModalShow, window.hashtagWallConfig.spotlightInterval);
 });
 
-function spotlightPost() {
-  var timestamp = new Date($("#card-container .card:first-of-type").data('time'));
+// function spotlightPost() {
+//   var timestamp = new Date($("#card-container .card:first-of-type").data('time'));
 
-  timestamp = timestamp.getTime();
+//   timestamp = timestamp.getTime();
 
-  $.getJSON(window.hashtagWallConfig.apiBaseUrl + "/posts/" + timestamp, function (posts) {
-    if (posts.length > 0) {
-      posts.forEach(function (item) {
-        if (spotlight.indexOf(item) == -1) {
-          spotlight.push(item);
-          toggleModalShow(item);
-        }
-      });
-    }
+//   $.getJSON(window.hashtagWallConfig.apiBaseUrl + "/posts/" + timestamp, function (posts) {
+//     if (posts.length > 0) {
+//       posts.forEach(function (post) {
+//         if (spotlight.indexOf(post) == -1) { //if post is not in current queue of tweets to spotlight
+//           spotlight.push(post); //add to end of list
+//           toggleModalShow(post); //toggle the modal to be shown
+//         }
+//       });
+//     }
+//   });
+// }
+
+function toggleModalShow() {
+  $("#popup").remove();
+  var post = spotlight[0];
+  $("#modal-content").append(popupTemplate(post));
+
+  imagesLoaded("#modal-content", function () {
+    var modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal");
+    setTimeout(toggleModalHide, 3000);//counts 3 seconds before toggling it again to be hidden
+    spotlight.shift();
   });
 }
 
-function toggleModalShow(item) {
-  $("#popup").remove();
-  $("#modal-content").append(popupTemplate(item));
-
-  var modal = document.querySelector(".modal");
-  modal.classList.toggle("show-modal");
-  setTimeout(toggleModalHide, 3000);//counts 3 seconds before toggling it again to be hidden
-  spotlight.shift();
-}
-
-function toggleModalHide() {
+function toggleModalHide(modal) {
+  //$("#popup").remove();
   var modal = document.querySelector(".modal");
   modal.classList.toggle("show-modal"); //toggles the div to be hidden
 }
@@ -94,9 +98,11 @@ function updateFeed() {
       posts.forEach(function (post) {
 
         var elem = $(cardTemplate(post)).get(0);
-
         elements.push(elem);
-        //spotlight.push(elem);
+
+        if (spotlight.indexOf(post) == -1) { //if post is not in current queue of tweets to spotlight
+          spotlight.push(post); //add to end of list
+        }
       });
 
       $("#card-container").prepend(elements);

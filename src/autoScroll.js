@@ -12,9 +12,10 @@ window.addEventListener("scroll", function (e) {
     // window.pageYOffset is the fallback value for IE
     currentPos = window.scrollY || window.pageYOffset;
 
-    //if bottom of page is reached, reload page
+    //if bottom of page is reached
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-       location.reload();
+       //location.reload();
+       window.scrollTo(0, 0); //scroll to top
     }
 });
 
