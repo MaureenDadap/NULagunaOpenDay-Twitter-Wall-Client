@@ -57,7 +57,7 @@ function toggleModalShow() {
   imagesLoaded("#modal-content", function () {
     var modal = document.querySelector(".modal");
     modal.classList.toggle("show-modal");
-    setTimeout(toggleModalHide, 4000);//counts 4 seconds before toggling it again to be hidden
+    setTimeout(toggleModalHide, 3000);//counts 3 seconds before toggling it again to be hidden
     spotlight.shift();
   });
 }
