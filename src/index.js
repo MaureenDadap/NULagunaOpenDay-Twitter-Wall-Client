@@ -48,23 +48,6 @@ $(document).ready(function () {
   setInterval(toggleModalShow, window.hashtagWallConfig.spotlightInterval);
 });
 
-// function spotlightPost() {
-//   var timestamp = new Date($("#card-container .card:first-of-type").data('time'));
-
-//   timestamp = timestamp.getTime();
-
-//   $.getJSON(window.hashtagWallConfig.apiBaseUrl + "/posts/" + timestamp, function (posts) {
-//     if (posts.length > 0) {
-//       posts.forEach(function (post) {
-//         if (spotlight.indexOf(post) == -1) { //if post is not in current queue of tweets to spotlight
-//           spotlight.push(post); //add to end of list
-//           toggleModalShow(post); //toggle the modal to be shown
-//         }
-//       });
-//     }
-//   });
-// }
-
 function toggleModalShow() {
   $("#popup").remove();
   var post = spotlight[0];
