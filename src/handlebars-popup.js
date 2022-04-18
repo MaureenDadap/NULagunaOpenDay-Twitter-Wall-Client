@@ -41,9 +41,13 @@ Handlebars.registerHelper("linkUsername", function (username, type) {
 });
 
 Handlebars.registerHelper("imagesIterator", function (image) {
-    var images = image.split(';');
+    var imagesUnfiltered = image.split(';');
     var imgElements = new Handlebars.SafeString("");
-    images.pop();
+
+    var images = imagesUnfiltered.filter(function (el) {
+        return el != "";
+    });
+
 
     if (images.length == 3)
         images.push("");
@@ -55,7 +59,7 @@ Handlebars.registerHelper("imagesIterator", function (image) {
 
     if (imgElements == undefined)
         return null;
-    else 
+    else
         return imgElements;
 });
 
