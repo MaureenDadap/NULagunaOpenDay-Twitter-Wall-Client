@@ -62,25 +62,3 @@ var popupTemplate = "<div class='pop-up card' id = 'popup' data-time='{{created_
 popupTemplate = Handlebars.compile(popupTemplate);
 
 export default popupTemplate
-
-// $.getJSON(window.hashtagWallConfig.apiBaseUrl + "/posts", function (posts) {
-//     post = posts[0];
-// })
-
-// var modal = document.querySelector(".modal");
-
-// $(document).ready(function () {
-//     setTimeout(toggleModalShow, 15000); //will wait for 15 seconds before initially showing a pop-up
-// })
-
-// function toggleModalShow() { //called after 15 seconds from line 73
-//     $("#popup").remove();
-//     $("#modal-content").append(cardTemplate(post));
-//     modal.classList.toggle("show-modal"); //toggles the div to be shown
-//     setTimeout(toggleModalHide, 3000); //counts 3 seconds before toggling it again to be hidden
-// }
-
-// function toggleModalHide() { //called after 3 seconds from line 80
-//     modal.classList.toggle("show-modal"); //toggles the div to be hidden
-//     setTimeout(toggleModalShow, 15000); //recounts 15 seconds again, fundamentally restarting the sequence that started in line 73
-// }

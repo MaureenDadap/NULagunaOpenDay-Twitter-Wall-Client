@@ -91,6 +91,7 @@ a {
     background: white;
     border-radius: 0.5rem;
     margin: 0 0 $card-gutter 0;
+
     .content {
       padding: 0 1rem;
       overflow-wrap: break-word;
@@ -99,6 +100,10 @@ a {
       img {
         width: 100%;
         object-fit: cover;
+        border-radius: 0rem;
+      }
+
+      img:nth-child(1) {
         border-radius: 0.5rem 0.5rem 0rem 0rem;
       }
     }

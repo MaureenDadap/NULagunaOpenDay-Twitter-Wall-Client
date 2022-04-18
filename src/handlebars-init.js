@@ -1,22 +1,22 @@
 import Handlebars from 'handlebars/dist/cjs/handlebars';
 
-Handlebars.registerHelper("formatDate", function(date) {
+Handlebars.registerHelper("formatDate", function (date) {
 
   var itemDate = new Date(date);
 
   var string = itemDate.getDate() + "." + (itemDate.getMonth() + 1) + "." + itemDate.getFullYear() + " ";
 
-  if(itemDate.getHours() < 10) string = string + "0" + itemDate.getHours(); else string = string + itemDate.getHours();
+  if (itemDate.getHours() < 10) string = string + "0" + itemDate.getHours(); else string = string + itemDate.getHours();
 
   string = string + ":";
 
-  if(itemDate.getMinutes() < 10) string = string + "0" + itemDate.getMinutes(); else string = string + itemDate.getMinutes();
+  if (itemDate.getMinutes() < 10) string = string + "0" + itemDate.getMinutes(); else string = string + itemDate.getMinutes();
 
   return string;
 
 });
 
-Handlebars.registerHelper("parseHashtags", function(caption, type) {
+Handlebars.registerHelper("parseHashtags", function (caption, type) {
 
   caption = caption.replace(/\S*#(\[[^\]]+\]|\S+)/ig, '<a href=\'#\'>#$1</a>');
 
@@ -24,39 +24,61 @@ Handlebars.registerHelper("parseHashtags", function(caption, type) {
 
 });
 
-Handlebars.registerHelper("linkUsername", function(username, type) {
+Handlebars.registerHelper("linkUsername", function (username, type) {
 
-  switch(type) {
+  switch (type) {
 
-    case 1: 
-      return new Handlebars.SafeString("<a href='http://instagram.com/"+username+"' target='_blank'>"+username+"</a>");
-    break;
+    case 1:
+      return new Handlebars.SafeString("<a href='http://instagram.com/" + username + "' target='_blank'>" + username + "</a>");
+      break;
 
-    case 2: 
-      return new Handlebars.SafeString("<a href='http://twitter.com/"+username+"' target='_blank'>"+username+"</a>");
-    break;
+    case 2:
+      return new Handlebars.SafeString("<a href='http://twitter.com/" + username + "' target='_blank'>" + username + "</a>");
+      break;
 
   }
 
-}); 
+});
 
-var cardTemplate = "<div class='ui card' data-time='{{created_at}}'> "+
-  "{{#if image }}<div class='image'>"+
-    "<img src='{{image}}'>"+
-  "</div>{{/if}}"+
-  "<div class='content'>"+
-    "<div class='meta'>"+
-      "<span class='date'>{{formatDate created_at}}</span>"+
-    "</div>"+
-    "<div class='description'>"+
-      "{{parseHashtags caption type}}"+
-    "</div>"+
-  "</div>"+
-  "<div class='author type-{{type}}'>"+
-    "<img src='{{user.avatar}}' class='ui avatar image'>"+
-    "{{linkUsername user.username type}}"+
-  "</div>"+
-"</div>";
+Handlebars.registerHelper("imagesIterator", function (image) {
+  var images = image.split(';');
+  var imgElements = new Handlebars.SafeString("");
+
+  images.forEach(image => {
+    var imgElement = new Handlebars.SafeString('<img src="' + image + '">');
+    imgElements += imgElement;
+  });
+
+  if (imgElements == undefined)
+    return null;
+  else
+    return imgElements;
+  //return images;
+});
+
+var cardTemplate = "<div class='ui card' data-time='{{created_at}}'> " +
+  "{{#if image }}<div class='image'>" +
+  //"<img src='{{image}}'>" +
+  "{{{ imagesIterator image }}}" +
+  // "{{#each image}}" +
+  // "<img src={{math @index}}></img>" +
+  // "{{/each}}" +
+  // "{{/if}}" + 
+  // "{{imagesIterator image}}" +
+  "</div>{{/if}}" +
+  "<div class='content'>" +
+  "<div class='meta'>" +
+  "<span class='date'>{{formatDate created_at}}</span>" +
+  "</div>" +
+  "<div class='description'>" +
+  "{{parseHashtags caption type}}" +
+  "</div>" +
+  "</div>" +
+  "<div class='author type-{{type}}'>" +
+  "<img src='{{user.avatar}}' class='ui avatar image'>" +
+  "{{linkUsername user.username type}}" +
+  "</div>" +
+  "</div>";
 
 
 cardTemplate = Handlebars.compile(cardTemplate);
