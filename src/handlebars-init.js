@@ -40,7 +40,7 @@ Handlebars.registerHelper("linkUsername", function (username, type) {
 
 });
 
-Handlebars.registerHelper("imagesIterator", function (image) {
+Handlebars.registerHelper("imagesIteratorWall", function (image) {
   var images = image.split(';');
   var imgElements = new Handlebars.SafeString("");
 
@@ -53,18 +53,11 @@ Handlebars.registerHelper("imagesIterator", function (image) {
     return null;
   else
     return imgElements;
-  //return images;
 });
 
 var cardTemplate = "<div class='ui card' data-time='{{created_at}}'> " +
   "{{#if image }}<div class='image'>" +
-  //"<img src='{{image}}'>" +
-  "{{{ imagesIterator image }}}" +
-  // "{{#each image}}" +
-  // "<img src={{math @index}}></img>" +
-  // "{{/each}}" +
-  // "{{/if}}" + 
-  // "{{imagesIterator image}}" +
+  "{{{ imagesIteratorWall image }}}" +
   "</div>{{/if}}" +
   "<div class='content'>" +
   "<div class='meta'>" +

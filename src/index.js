@@ -23,7 +23,7 @@ $(document).ready(function () {
       var itemDate = new Date(item.time);
 
       $("#card-container").append(cardTemplate(item));
-
+      
     });
 
     imagesLoaded("#card-container", function () {
@@ -51,6 +51,7 @@ $(document).ready(function () {
 function toggleModalShow() {
   $("#popup").remove();
   var post = spotlight[0];
+
   $("#modal-content").append(popupTemplate(post));
 
   imagesLoaded("#modal-content", function () {

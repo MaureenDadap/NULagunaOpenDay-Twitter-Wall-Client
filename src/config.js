@@ -3,7 +3,7 @@ window.hashtagWallConfig = {
   apiBaseUrl: 'http://localhost:8080',
   // apiBaseUrl: 'https://nu-open-day-2022-api.loca.lt/',
   updateInterval: 1000,
-  spotlightInterval: 2800,
+  spotlightInterval: 10000,
 };
 
 //lt --port 8081 --subdomain nu-open-day-2022 --local-host localhost

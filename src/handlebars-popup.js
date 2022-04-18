@@ -40,9 +40,29 @@ Handlebars.registerHelper("linkUsername", function (username, type) {
 
 });
 
+Handlebars.registerHelper("imagesIterator", function (image) {
+    var images = image.split(';');
+    var imgElements = new Handlebars.SafeString("");
+    images.pop();
+
+    if (images.length == 3)
+        images.push("");
+
+    images.forEach(image => {
+        var imgElement = new Handlebars.SafeString('<div class="image"><img src="' + image + '"></div>');
+        imgElements += imgElement;
+    });
+
+    if (imgElements == undefined)
+        return null;
+    else 
+        return imgElements;
+});
+
+
 var popupTemplate = "<div class='pop-up card' id = 'popup' data-time='{{created_at}}'> " +
-    "{{#if image }}<div class='image'>" +
-    "<img src='{{image}}'>" +
+    "{{#if image }}<div class='image-container'>" +
+    "{{{ imagesIterator image }}}" +
     "</div>{{/if}}" +
     "<div class='content'>" +
     "<div class='meta'>" +
