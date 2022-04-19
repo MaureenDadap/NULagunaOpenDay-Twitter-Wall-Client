@@ -41,21 +41,30 @@ Handlebars.registerHelper("linkUsername", function (username, type) {
 });
 
 Handlebars.registerHelper("imagesIterator", function (image) {
-    var imagesUnfiltered = image.split(';');
-    var imgElements = new Handlebars.SafeString("");
-
-    var images = imagesUnfiltered.filter(function (el) {
-        return el != "";
-    });
-
-
-    if (images.length == 3)
-        images.push("");
+    var images = image.split(';');
+    images.pop(); //remove last element because it is always empty
+    var imgElements = new Handlebars.SafeString('<div class="image-container ');
+    
+    var imgCount = images.length;
+    var imgClass;
+    if (imgCount == 1) {
+        imgClass = 'img-1">';
+    } else if (imgCount == 2) {
+        imgClass = 'img-2">';
+    } else if (imgCount == 3) {
+        imgClass = 'img-3">';
+    } else if (imgCount == 4) {
+        imgClass = 'img-4">';
+    }
+    imgElements +=  new Handlebars.SafeString(imgClass);
 
     images.forEach(image => {
-        var imgElement = new Handlebars.SafeString('<div class="image"><img src="' + image + '"></div>');
-        imgElements += imgElement;
+        var img = new Handlebars.SafeString('<div class="image"><img src="' + image + '"></div>');
+        imgElements += img;
     });
+
+
+    imgElements +=  new Handlebars.SafeString('</div>');
 
     if (imgElements == undefined)
         return null;
@@ -64,10 +73,31 @@ Handlebars.registerHelper("imagesIterator", function (image) {
 });
 
 
-var popupTemplate = "<div class='pop-up card' id = 'popup' data-time='{{created_at}}'> " +
-    "{{#if image }}<div class='image-container'>" +
+
+
+// var popupTemplate = "<div class='pop-up card' id = 'popup' data-time='{{created_at}}'> " +
+//     "{{#if image }}<div class='image-container'>" +
+//     //"{{ imageCounter image }} " +
+//     "{{{ imagesIterator image }}}" +
+//     "</div>{{/if}}" +
+//     "<div class='content'>" +
+//     "<div class='meta'>" +
+//     "<span class='date'>{{formatDate created_at}}</span>" +
+//     "</div>" +
+//     "<div class='description'>" +
+//     "{{parseHashtags caption type}}" +
+//     "</div>" +
+//     "</div>" +
+//     "<div class='author type-{{type}}'>" +
+//     "<img src='{{user.avatar}}' class='ui avatar image'>" +
+//     "{{linkUsername user.username type}}" +
+//     "</div>" +
+//     "</div>";
+
+var popupTemplate = "<div class='ui card' id = 'popup' data-time='{{created_at}}'> " +
+    "{{#if image }}" +
     "{{{ imagesIterator image }}}" +
-    "</div>{{/if}}" +
+    "{{/if}}" +
     "<div class='content'>" +
     "<div class='meta'>" +
     "<span class='date'>{{formatDate created_at}}</span>" +
@@ -81,7 +111,6 @@ var popupTemplate = "<div class='pop-up card' id = 'popup' data-time='{{created_
     "{{linkUsername user.username type}}" +
     "</div>" +
     "</div>";
-
 
 popupTemplate = Handlebars.compile(popupTemplate);
 
