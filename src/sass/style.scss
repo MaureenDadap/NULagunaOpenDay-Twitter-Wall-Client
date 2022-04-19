@@ -342,9 +342,8 @@ a {
       0 8px 10px -6px rgb(0 0 0 / 0.1);
 
     .content {
-      padding: 0 1rem;
-      overflow-wrap: break-word;
-      max-width: 100%;
+      margin: 0 1rem;
+      word-wrap: break-word;
     }
     .image-container {
       display: flex;
@@ -368,12 +367,9 @@ a {
     }
 
     .image-container.img-1 {
-      width: auto;
-
       .image img {
         height: 55vh;
         border-radius: 0.5rem 0.5rem 0rem 0rem;
-        width: auto;
         //object-fit: cover;
       }
     }
@@ -441,7 +437,8 @@ a {
         border-radius: 0rem 0.5rem 0rem 0rem;
       }
 
-      :nth-child(3) img, :nth-child(4) img {
+      :nth-child(3) img,
+      :nth-child(4) img {
         border-radius: 0rem;
       }
     }
@@ -480,4 +477,3 @@ a {
     }
   }
 }
-
